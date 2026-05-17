@@ -133,3 +133,8 @@ Method 1: n = 9999 x = 1.001 f = 2.19276e+10 t = 42.039ms
 Method 2: n = 9999 x = 1.001 f = 2.19276e+10 t = 0.015ms
 Method 3: n = 9999 x = 1.001 f = 2.19276e+10 t = 0.071ms
 ```
+
+---
+<a href="https://github.com/liuchunyi-buaa">
+    <img src="https://img.shields.io/badge/Author-刘纯一-3776AB?logo=github&logoColor=white" />
+</a>
