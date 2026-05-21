@@ -1,6 +1,8 @@
 ## 知识点总结
 本节内容对应的[PPT](../../PPT/第3章%20线性方程组的数值求解.pdf)
 
+本节内容对应的[参考代码](../../Code/非线性方程组的数值解法.cpp)
+
 快速索引
 - [知识点总结](#知识点总结)
 - [范数与方程的形态、条件数](#范数与方程的形态条件数)
@@ -141,12 +143,68 @@ $$x=-D^{-1}((A-D)x-b) \qquad {(1)}$$
 
 $$x^{(k+1)}=-D^{-1}((A-D)x^{(k)}-b)$$
 
+代码[非线性方程组的数值解法.cpp](../../Code/非线性方程组的数值解法.cpp)中的 `Jacobi` 函数实现了一般的 Jacobi迭代法。
+
+```cpp
+vector<double> Jacobi()
+{
+    vector<vector<double>> x(2, init_point);
+    double e = 1.;
+    int cnt = 0;
+    while(e > EPS)
+    {
+        int k = cnt % 2, kk = (cnt + 1) % 2;
+        cnt ++;
+        for(int i = 0; i < N; i ++)
+        {
+            x[kk][i] = b[i];
+            for(int j = 0; j < N; j ++)
+            {
+                if(j == i) continue;
+                x[kk][i] -= a[i][j] * x[k][j];
+            }
+            x[kk][i] /= a[i][i];
+        }
+        e = 0;
+        for(int i = 0; i < N; i ++) e += fabs(x[kk][i] - x[k][i]);
+    }
+    return x[cnt % 2];
+}
+```
+注：这里的展示略去了打印迭代的过程的代码，且方程组定义为全局变量，故此函数无需传参。
+
 ### Gauss-Seidel迭代法
 **核心思想：** Jacobi迭代法中计算 $x_i^{(k+1)}$ 时，已经得到了 $x_1^{(k+1)},\dots,x_{i-1}^{(k+1)}$，用已经得到的分量去算其余分量。
 
 迭代公式
 
 $$x_i^{(k+1)}=-\dfrac{1}{a_{ii}}\left(\sum_{j=1}^{i-1}a_{ij}x_j^{(k+1)}+\sum_{j=i+1}^{n}a_{ij}x_j^{(k)}\right)+\dfrac{b_i}{a_{ii}}\qquad{(2)}$$
+
+代码[非线性方程组的数值解法.cpp](../../Code/非线性方程组的数值解法.cpp)中的 `Gauss_Seidel` 函数实现了一般Gauss-Seidel迭代法。
+```cpp
+vector<double> Guass_Seidel()
+{
+    vector<vector<double>> x(2, init_point);
+    double e = 1.;
+    int cnt = 0;
+    while(e > EPS)
+    {
+        int k = cnt % 2, kk = (cnt + 1) % 2;
+        cnt ++;
+        for(int i = 0; i < N; i ++)
+        {
+            x[kk][i] = b[i];
+            for(int j = 0; j < i; j ++) x[kk][i] -= a[i][j] * x[kk][j];
+            for(int j = i + 1; j < N; j ++) x[kk][i] -= a[i][j] * x[k][j];
+            x[kk][i] /= a[i][i];
+        }
+        e = 0;
+        for(int i = 0; i < N; i ++) e += fabs(x[kk][i] - x[k][i]);
+    }
+    return x[cnt % 2];
+}
+```
+注：这里的展示略去了打印迭代的过程的代码，且方程组定义为全局变量，故此函数无需传参。
 
 ### 松弛法
 由 $(2)$ 式可以得到 
