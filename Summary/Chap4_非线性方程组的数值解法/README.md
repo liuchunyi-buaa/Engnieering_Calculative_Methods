@@ -91,7 +91,7 @@ $$
 
 依然希望 $\varphi\left(x^{k+1}\right)=0$，得 $\alpha_k=\dfrac{\varphi\left(x^{k}\right)}{(p^{(k)}) ^Tp^{(k)}}$
 
-注：$\nabla\varphi\left(x\right),x$ 均是列向量
+注： $\nabla\varphi\left(x\right),x$ 均是列向量
 
 故最速下降法的迭代公式为
 
