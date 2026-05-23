@@ -26,7 +26,7 @@ $$E(X)=\int_{-\infty}^{+\infty}xf(x)\mathrm{d}x$$
 
 **方差**
 
-定义：$D(x)=E\left\lbrace\left[x-E(X)\right]^2\right\rbrace=E\left(X^2\right)-\left[E(x)\right]^2$
+定义： $D(x)=E\left\lbrace\left[x-E(X)\right]^2\right\rbrace=E\left(X^2\right)-\left[E(x)\right]^2$
 
 计算期望即可
 
@@ -54,6 +54,7 @@ double phi(double x)
 ```
 
 `Phi` 函数利用梯形公式计算了 $\Phi(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-\frac{x^2}{2}} \mathrm{d}x$ ，由于负无穷在计算机中无法到达，故将公式作出调整 
+
 $$\begin{aligned}
   \Phi(x) & =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^x e^{-\frac{x^2}{2}} \mathrm{d}x \\
   & =\frac{1}{\sqrt{2\pi}}\int_{-\infty}^0 e^{-\frac{x^2}{2}} \mathrm{d}x + \frac{1}{\sqrt{2\pi}}\int_0^x e^{-\frac{x^2}{2}} \mathrm{d}x \\
