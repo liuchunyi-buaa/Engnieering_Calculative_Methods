@@ -23,6 +23,9 @@
 - [Hermite插值](#hermite插值)
   - [插值公式（省流）](#插值公式省流)
   - [差值余项](#差值余项-1)
+- [样条插值](#样条插值)
+  - [三次样条插值](#三次样条插值)
+    - [三类边界条件](#三类边界条件)
 
 先弄清楚插值法是干什么
 
@@ -354,3 +357,101 @@ $$H_{2n+1}(x)=\sum_{i=0}^nf(x_i)\left[1-2(x-x_i)\sum_{j=0,j\neq i}^n\dfrac{1}{x_
 
 $$R_{2n+1}(x)=\dfrac{f^{(2n+2)}(\xi)}{(2n+2)!}\left[\prod_{i=0}^n(x-x_i)\right]$$
 
+## 样条插值
+**定义:** 
+- $S(x)$ 在每子区间上是不超过 $k$ 次多项式
+- $S(x)$ 在每子区间上有 $k-1$ 阶导数
+
+则称 $S(x)$ 是 $k$ 次样条函数。
+
+$Excel$ 文件 [三次样条插值计算实验.xlsx](../../Excel/插值方法/三次样条插值计算实验.xlsx) 为上课实验的文件，其中已经提前写好了大量的公式，~~作者猜测期末考试应该也是这个模式~~
+
+### 三次样条插值
+这是最常用的方法。依然是在 $a \leq x_0 < x_1 \dots < x_n \leq b$ 上插值拟合。
+
+直接上结论，在区间 $[x_i,x_{i+1}]$ 上的三次样条插值函数为
+
+$$S_i(x)=M_i\dfrac{(x_{i+1}-x)^3}{6h_i}+M_{i+1}\dfrac{(x-x_i)^3}{6h_i}+\left(\dfrac{y_i}{h_i}-\dfrac{M_i}{6}h_i\right)(x_{i+1}-x_i)+\left(\dfrac{y_{i+1}}{h_i}-\dfrac{M_{i+1}}{6}h_i\right)(x-x_i)$$
+
+其中 $h_i=x_i-x_{i-1},\enspace i=1,2,\dots,n$ ，关键就是如何求解公式中的 $M_i$
+
+$$
+ \begin{bmatrix}
+ 2 & \lambda_0 &  &  &  \\
+ \mu_1 & 2 & \lambda_1 &  &  \\
+ & \dots & \dots & \dots &  \\
+ &  & \mu_{n-1} & 2 & \lambda_{n-1} \\
+ &  &  & \mu_N & 2 \\
+\end{bmatrix}
+\begin{bmatrix}
+M_0 \\
+M_1 \\
+\dots \\
+M_{n-1} \\
+M_n \\
+\end{bmatrix}=\begin{bmatrix}
+d_0 \\
+d_1 \\
+\dots \\
+d_{n-1} \\
+d_n \\
+\end{bmatrix}
+$$
+
+现在问题变为了，如何确定系数矩阵中的 $\mu_i,\lambda_i,d_i$
+
+**递推关系**
+
+$$
+\begin{cases}
+    \mu_i=\dfrac{h_i}{h_{i-1}+h_i} ,\enspace \lambda_i = 1 - \mu_i\\
+    d_i=\dfrac{6}{h_{i-1}+h_i}\left(\dfrac{y_{i+1}-y_i}{h_i}-\dfrac{y_i-y_{i-1}}{h_{i-1}}\right)
+\end{cases}
+$$
+
+而 $\lambda_0, d_0,\mu_n,d_n$ 则由边界条件决定。
+
+#### 三类边界条件
+
+- 第 $1$ 类边界条件： $S^{''}(x_0)=M_0,S^{''}(x_n)=M_n$
+
+$$\lambda_0=0, d_0=2y^{''}_0,\mu_n=0,d_n=2y_n^{''}$$
+
+- 第 $2$ 类边界条件： $S^{'}(x_0)=y_0^{'},S^{'}(x_n)=y^{'}_n$
+
+$$\lambda_0=1,\mu_n=1,d_0=\dfrac{6}{h_1}\left(\dfrac{y_1-y_0}{h_1}-y_0^{'}\right),d_n=\dfrac{6}{h_n}\left(y^{'}_n-\dfrac{y_{n-1}-y_n}{x_{n-1}-x_n}\right)$$
+
+- 第 $3$ 类边界条件： $f(x)$n 是周期函数，满足条件 $S(x_0)=S(x_n),S^{'}(x_0^+)=S^{'}(x_n^-),S^{''}(x_0^+)=S^{''}(x_n^-)$
+
+$$\begin{cases}
+    M_n=M_0\\
+    \lambda_n M_1+\mu_nM_{n-1}+2M_n=d_n
+\end{cases}$$
+
+其中 $\mu_n=\dfrac{h_n}{h_n-h_1},\lambda_n=1-\mu_n,d_n=6\left(\dfrac{y_1-y_0}{h_1}-\dfrac{y_n-y_{n-1}}{h_n}\right)(h_1,h_n)^{-1}$
+
+有
+$$
+ \begin{bmatrix}
+ 2 & \lambda_0 &  &  & \mu_1 \\
+ \mu_1 & 2 & \lambda_1 &  &  \\
+ & \dots & \dots & \dots &  \\
+ &  & \mu_{n-1} & 2 & \lambda_{n-1} \\
+\lambda_n &  &  & \mu_N & 2 \\
+\end{bmatrix}
+\begin{bmatrix}
+M_1 \\
+M_2 \\
+\dots \\
+M_{n-1} \\
+M_n \\
+\end{bmatrix}=\begin{bmatrix}
+d_1 \\
+d_2 \\
+\dots \\
+d_{n-1} \\
+d_n \\
+\end{bmatrix}
+$$
+
+<h5>说实话，作者也没有很看明白这个样条插值，大部分照搬PPT罢了</h5>
