@@ -32,7 +32,7 @@ $$\sum_{j=0}^n\left[a_j\sum_{i=0}^m\varphi_k(x_i)\varphi_j(x_i)\right]=\sum_{i=0
 
 对于 $k=0,1,2,\dots,n$ 均要求成立，得以下方程组
 
-$$
+```math
 \begin{bmatrix}
 \sum_{i=0}^m\varphi_0(x_i)\varphi_0(x_i) & \sum_{i=0}^m\varphi_1(x_i)\varphi_0(x_i) & \dots & \sum_{i=0}^m\varphi_0(x_i)\varphi_n(x_i) \\
 \sum_{i=0}^m\varphi_1(x_i)\varphi_0(x_i) & \sum_{i=0}^m\varphi_1(x_i)\varphi_1(x_i) & \dots & \sum_{i=0}^m\varphi_1(x_i)\varphi_n(x_i) \\
@@ -52,18 +52,21 @@ $$
 \vdots \\
 \sum_{i=0}^my_i\varphi_n(x_i) \\
 \end{bmatrix}
-$$
+```
 
 实际上，我们在 $\text{Excel}$ 中常常把这些用向量表示，这样便于计算也便于理解。定义 
+
 ```math
+\begin{matrix}
 x=(x_0,x_1,x_2\dots,x_m) \\
 y=(y_0,y_1,y_2,\dots,y_m) \\
 \varphi_j=[\varphi_j(x_0),\varphi_j(x_1),\varphi_j(x_2),\dots,\varphi_j(x_m)]
+\end{matrix}
 ```
 
 则上面的方程组可以化简为
 
-$$
+```math
 \begin{bmatrix}
 \varphi_0\cdot\varphi_0 & \varphi_0\cdot\varphi_1 & \dots & \varphi_0\cdot\varphi_n \\
 \varphi_1\cdot\varphi_0 & \varphi_1\cdot\varphi_1 & \dots & \varphi_1\cdot\varphi_n \\
@@ -83,7 +86,7 @@ y\cdot\varphi_1 \\
 \vdots \\
 y\cdot\varphi_n \\
 \end{bmatrix}
-$$
+```
 
 向量点乘可以使用 $\text{Excel}$ 中的 `=SUMPRODUCT()` 函数进行计算。
 
