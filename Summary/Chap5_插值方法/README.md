@@ -362,7 +362,7 @@ $$H_{2n+1}(x)=\sum_{i=0}^nf(x_i)\left[1-2(x-x_i)\sum_{j=0,j\neq i}^n\dfrac{1}{x_
 ### 差值余项
 类似于 Lagrange 插值
 
-$$R_{2n+1}(x)=\dfrac{f^{(2n+2)}(\xi)}{(2n+2)!}\left[\prod_{i=0}^n(x-x_i)\right]$$
+$$R_{2n+1}(x)=\dfrac{f^{(2n+2)}(\xi)}{(2n+2)!}\left[\prod_{i=0}^n(x-x_i)\right]^2$$
 
 ## 样条插值
 **定义:** 
