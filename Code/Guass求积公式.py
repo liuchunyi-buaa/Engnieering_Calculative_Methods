@@ -2,9 +2,9 @@ import numpy as np
 import math
 import types
 
-N = 2 # 多项式的次数
+N = 1 # 多项式的次数
 EPS = 1e-9 # 误差限
-R = 0 # 权函数的次数（如果为多项式）
+R = -0.5 # 权函数的次数（如果为多项式）
 
 
 # 可以设置不是多项式的权函数

@@ -4,8 +4,8 @@
 #include <vector>
 using namespace std;
 #define EPS 1e-6 // 误差限
-#define A 1 // 区间[a, b]左端点
-#define B 2 // 区间[a, b]右端点
+#define A 0 // 区间[a, b]左端点
+#define B 1. // 区间[a, b]右端点
 
 // Cotes系数列表
 const vector<vector<double>> C = {
@@ -23,7 +23,7 @@ const vector<vector<double>> C = {
 // 待积分函数
 double funcToInt(double x)
 {
-    return 1./x;
+    return exp(-x);
 }
 
 double Newton_Cotes(double (*f)(double), double a, double b, double n)
