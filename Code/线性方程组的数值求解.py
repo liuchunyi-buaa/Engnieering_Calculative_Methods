@@ -1,5 +1,7 @@
 import numpy as np
 
+# 在这了定义你的 Ax=B 以及初值和误差限
+# 注意 A 的主对角线上不要有 0
 A = [[1, 1, 0, 0],
      [0, 1, 0, -2],
      [0, -1, 1, 1],
@@ -52,8 +54,8 @@ def Relaxation(a, b, x0, omega=0.9):
     while e > EPS and cnt < 100:
         k, kk = cnt % 2, (cnt + 1) % 2
         cnt += 1
-        x_gs = np.linalg.solve(dl, b - u @ x[k])      # Gauss-Seidel 步
-        x[kk] = x[k] + omega * (x_gs - x[k])            # x + omega * Delta x
+        x_gs = np.linalg.solve(dl, b - u @ x[k])      
+        x[kk] = x[k] + omega * (x_gs - x[k])          
         e = sum(abs(x[k] - x[kk]))
         print(f"{cnt} x =", *x[kk], f"e = {e}")
     return x[cnt % 2]
