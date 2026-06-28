@@ -176,7 +176,7 @@ $$\begin{cases}
     k_4 = hf(x_n+h, y_n+k_3)
 \end{cases}$$
 
-代码[常微分方程的数值解法.cpp](../../Code/常微分方程的数值解法.cpp)中的 `Runge-Kutta4()` 函数实现了一般形式的四阶Runge-Kutta方法解常微分方程
+代码[常微分方程的数值解法.cpp](../../Code/常微分方程的数值解法.cpp)中的 `Runge_Kutta4()` 函数实现了一般形式的四阶Runge-Kutta方法解常微分方程
 ```cpp
 double Runge_Kutta4(double (*f)(double, double), double l, double r, double y0, double step)
 {

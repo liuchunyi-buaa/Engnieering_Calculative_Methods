@@ -35,11 +35,11 @@ $$f(x)\approx\sum_{j=0}^n\left[\int_a^b\sum_{i=0}^nl_i(x)\mathrm{d}x\right]f(x_i
 
 则此时的求积系数为
 
-$$A_i=\int_a^b\prod_{j=0,j\neq i}^n\dfrac{x-x_j}{x_i-x_j}\mathrm{d}x=h\left(\prod_{j=0,j\neq i}^n\dfrac{1}{k-j}\right)\int_a^b\prod_{j=0,j\neq i}^n(t-j)\mathrm{d}t=\dfrac{(b-a)(-1)^{n-j}}{nj!(n-j)!}\int_a^b\prod_{j=0,j\neq i}^n(t-j)\mathrm{d}t$$
+$$A_i=\int_a^b\prod_{j=0,j\neq i}^n\dfrac{x-x_j}{x_i-x_j}\mathrm{d}x=h\left(\prod_{j=0,j\neq i}^n\dfrac{1}{k-j}\right)\int_0^n\prod_{j=0,j\neq i}^n(t-j)\mathrm{d}t=\dfrac{(b-a)(-1)^{n-j}}{nj!(n-j)!}\int_0^n\prod_{j=0,j\neq i}^n(t-j)\mathrm{d}t$$
 
 定义Cotes系数
 
-$$C_i^{(n)}=\dfrac{(-1)^{n-i}}{ni!(n-i)!}\int_a^b\prod_{j=0,j\neq i}^n(t-j)\mathrm{d}t,\enspace i=0,1,2,\dots,n$$
+$$C_i^{(n)}=\dfrac{(-1)^{n-i}}{ni!(n-i)!}\int_0^n\prod_{j=0,j\neq i}^n(t-j)\mathrm{d}t,\enspace i=0,1,2,\dots,n$$
 
 则求积公式变为
 
@@ -87,7 +87,7 @@ double Newton_Cotes(double (*f)(double), double a, double b, double n)
 ### 代数精度
 定义：对于一个数值求积公式，如果对于 $m$ 阶多项式精确成立；对于 $m+1$ 阶多项式不精确成立，则这个求积公式具有 $m$ 阶代数精度。
 
-**Newton-Cotes公式代数精度定理：**
+**Newton-Cotes公式代数精度定理：**  $n$ 阶 Newton-Cotes公式至少具有 $n$ 阶代数精度，当 $n$ 为偶数时则具有 $n+1$ 阶代数精度
 
 ### 余项分析
 由Lagrange差值公式的余项
