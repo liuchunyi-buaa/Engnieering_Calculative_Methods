@@ -135,6 +135,7 @@ $$\begin{cases}
 ### 二阶Runge-Kutta方法
 
 常用的有两种，休恩方法
+
 $$\begin{cases}
     y_{n+1}=y_n+\dfrac{k_1+3k_2}{4}\\
     k_1 = hf(x_n,y_n)\\
