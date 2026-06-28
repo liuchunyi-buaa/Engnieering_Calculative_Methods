@@ -1,4 +1,4 @@
-# 工程计算方法 ♿️ 复习仓库hhh
+# 工程计算方法 ♿️ 复习仓库
 
 <p align="center">
   <a href="https://github.com/liuchunyi-buaa">
