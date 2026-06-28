@@ -62,6 +62,7 @@
 │   ├── Guass求积公式.py
 │   ├── 非线性方程组的数值解法.py
 │   ├── 函数的数值拟合.py
+│   ├── 线性方程组的数值求解.py
 │   ├── sample_graph.txt
 │   └── README.md
 │

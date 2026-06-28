@@ -64,7 +64,7 @@ Nested template syntax like `vector<vector<double>>` requires C++11 (right-angle
 |----|-------|------------|
 | 1 | 数值误差 | `秦九韶法.cpp` |
 | 2 | 非线性方程数值解法 | `非线性方程的数值解法.cpp` (bisection, Newton, secant, general iteration) |
-| 3 | 线性方程组数值求解 | `线性方程组的数值求解.cpp` (Jacobi, Gauss-Seidel, SOR) |
+| 3 | 线性方程组数值求解 | `线性方程组的数值求解.cpp` (Jacobi, Gauss-Seidel, SOR), `线性方程组的数值求解.py` (矩阵形式) |
 | 4 | 非线性方程组数值求解 | `非线性方程组的数值解法.py` (Newton, steepest descent) |
 | 5 | 插值方法 | `插值方法.cpp` (Lagrange, Newton, Hermite, cubic spline) |
 | 6 | 函数数值拟合 | `函数的数值拟合.py` (least squares fitting) |
@@ -72,5 +72,6 @@ Nested template syntax like `vector<vector<double>>` requires C++11 (right-angle
 | 8 | 常微分方程数值解法 | `常微分方程的数值解法.cpp` (Euler, RK2/RK4, predictor-corrector) |
 | 9 | 质量与可靠性统计 | `正态分布.cpp` (normal PDF/CDF) |
 | 10 | 线性搜索与排序 | `线性搜索算法.cpp` (golden section), `排序算法.cpp` (7 sorting algorithms + MinHeap class) |
+| 11 | 网络与图相关算法 | `树的遍历算法.cpp` (binary tree traversal), `图的遍历与最短路径.cpp` (BFS/DFS, Dijkstra) |
 
 See `Summary/README.md` for the full mapping with PPT and Excel links.

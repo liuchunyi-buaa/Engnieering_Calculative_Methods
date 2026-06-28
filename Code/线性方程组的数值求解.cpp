@@ -1,3 +1,7 @@
+/*
+线性方程组的数值求解一共有两个文件
+该文件使用的是逐个元素计算的方法，没有使用矩阵运算
+*/
 #include <iostream>
 #include <stdio.h>
 #include <vector>
@@ -6,18 +10,19 @@ using namespace std;
 
 // 你需要在这里修改方程组的形状和误差限
 #define N 4
-#define EPS 1e-10
+#define EPS 1e-6
 
 // 在这里修改方程组，注意要与你之前设置的方程组形状对应
+// 注意，如果你使用这个文件的话，必须保证 a 主对角线上的元素不为0
 const vector<vector<double>> a = {
-    {12, 2, 1, 1},
-    {1, 9, 1, 2},
-    {2, 2, 10, 1},
-    {2, 1, 2, 8}
+    {1, 1, 0, 0},
+    {0, 1, 0, -2},
+    {0, -1, 1, 1},
+    {0, -1, 0, 3}
 };
-const vector<double> b = {1, 1.5, 3, 2};
+const vector<double> b = {1, 1, 1, 1};
 // 在这设置初始点
-const vector<double> init_point = {1, 100, 1, 1};
+const vector<double> init_point = {1, 1, 1, 1};
 
 vector<double> Jacobi()
 {
