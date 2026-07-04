@@ -1,0 +1,35 @@
+BUAA 工程计算方法（2026 春）复习参考仓库
+查看该仓库的最佳方式为 https://github.com/liuchunyi-buaa/Engnieering_Calculative_Methods
+仓库不定时更新中，如有错误或改进建议，欢迎联系我们（24374180@buaa.edu.cn）或提交 Issue / Pull Request
+
+---
+
+【快速导航】
+
+  Code/      参考代码（C++ 为主，少量 Python，编译运行方式见 CLAUDE.md）
+  PPT/       课件 PDF，共 10 章
+  Summary/   知识点总结（Markdown + LaTeX 公式），每章一个文件夹，建议在线查看以保证 GFM 格式正确
+  Excel/     课堂计算实验，部分含学生版空白模板
+
+【各章速查】
+
+  Ch1  数值误差              → 秦九韶法.cpp
+  Ch2  非线性方程数值解法     → 非线性方程的数值解法.cpp（二分/牛顿/割线/一般迭代）
+  Ch3  线性方程组数值求解     → Jacobi / Gauss-Seidel / SOR（C++ & Python）
+  Ch4  非线性方程组数值求解   → 牛顿法、最速下降法（Python）
+  Ch5  插值方法              → Lagrange / Newton / Hermite / 三次样条（C++）
+  Ch6  函数数值拟合           → 最小二乘拟合（Python）
+  Ch7  数值积分              → Newton-Cotes / Romberg / Gauss（C++ & Python）
+  Ch8  常微分方程数值解法     → Euler / RK2/RK4 / 预估校正（C++）
+  Ch9  质量与可靠性统计方法   → 正态分布 CDF/T 检验/可靠性指标/参数估计
+  Ch10 线性搜索与排序算法     → 黄金分割搜索 / 7 种排序算法 + 最小堆
+  Ch11 网络与图相关算法       → 二叉树遍历 / BFS / DFS / Dijkstra 最短路径
+
+  详细对照表见 Summary/README.md
+
+【代码使用】
+
+  所有 .cpp 文件通过文件顶部 #define 宏修改参数，编译即用：
+    g++ -std=c++11 Code/文件名.cpp -o output/输出名 && ./output/输出名
+  Python 需先安装依赖：
+    pip install -r requirements.txt
